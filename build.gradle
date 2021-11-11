@@ -17,7 +17,7 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 version = '0.0.1'
-group = 'ehu.isad'
+group = 'App.controllers'
 
 java {
     modularity.inferModulePath.set(true)
@@ -25,13 +25,13 @@ java {
 
 application {
     mainModule = 'javafx' // name defined in module-info.java
-    mainClass = 'ehu.isad.Main'
+    mainClass = 'App.controllers.Main'
 }
 
 
 
 // ext.moduleName = 'gradlejavafxhelloworld'
-mainClassName = "$moduleName/ehu.isad.EurovisionEIB"
+mainClassName = "$moduleName/App.controllers.Konekta4FX"
 
 
 javafx {
@@ -68,4 +68,3 @@ run {
         classpath = files()
     }
 }
-

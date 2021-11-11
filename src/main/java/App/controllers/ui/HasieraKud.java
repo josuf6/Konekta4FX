@@ -25,7 +25,7 @@ public class HasieraKud implements Initializable{
 
     @FXML
     void onClick(ActionEvent event) {
-        main();
+        main.jokoaErakutsi();
     }
 
     public void setMainApp(Konekta4FX main) {
