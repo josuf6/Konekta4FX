@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="523.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.controllers.ui.HasieraKud">
+   <children>
+      <Text layoutX="165.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehenengo jokalariaren izena jarri:" wrappingWidth="233.16015625" />
+      <Text layoutX="184.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bigarren jokalariaren izena jarri:" wrappingWidth="215.16015625" />
+      <TextField fx:id="txt1" layoutX="440.0" layoutY="95.0" />
+      <TextField fx:id="txt2" layoutX="440.0" layoutY="200.0" />
+      <Button fx:id="btnBotoia" layoutX="367.0" layoutY="378.0" mnemonicParsing="false" onAction="#onClick" text="Jarraitu" />
+   </children>
+</AnchorPane>

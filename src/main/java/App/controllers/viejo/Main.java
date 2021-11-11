@@ -1,6 +1,6 @@
 package App.controllers.viejo;
 
-import Klaseak.Konekta4;
+
 
 public class Main {
 	//atributuak
