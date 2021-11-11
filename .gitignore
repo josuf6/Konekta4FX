@@ -1,2 +1,11 @@
 # Project exclude paths
 /.gradle/
+
+# Ignore Gradle build output directory
+build
+
+.idea
+
+gradle
+
+/src/main/resources/setup.properties
