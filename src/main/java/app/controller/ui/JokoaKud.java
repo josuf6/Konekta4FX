@@ -1,8 +1,7 @@
-package App.controllers.ui;
+package app.controller.ui;
 
-import App.Konekta4FX;
+import app.Konekta4FX;
 import javafx.animation.TranslateTransition;
-import javafx.application.Application;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
@@ -14,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -38,7 +36,14 @@ public class JokoaKud implements Initializable {
 
     private Pane discRoot = new Pane();
 
-    private Parent createContent() {
+    private String j1;
+    private String j2;
+
+    public Parent createContent(String jok1,String jok2) {
+
+        j1=jok1;
+        j2=jok2;
+
         Pane root = new Pane();
         root.getChildren().add(discRoot);
 
@@ -172,28 +177,35 @@ public class JokoaKud implements Initializable {
         return false;
     }
 
-    private void gameOver() {
-            System.out.println("Winner: " + (redMove ? "RED" : "YELLOW"));
-        }
-
     private Optional<Disc> getDisc(int column, int row) {
         if (column < 0 || column >= COLUMNS
                 || row < 0 || row >= ROWS)
             return Optional.empty();
 
             return Optional.ofNullable(grid[column][row]);
-        }
+    }
 
-        private static class Disc extends Circle {
-            private final boolean red;
-            public Disc(boolean red) {
-                super(TILE_SIZE / 2, red ? Color.RED : Color.YELLOW);
-                this.red = red;
+    private static class Disc extends Circle {
+        private final boolean red;
+        public Disc(boolean red) {
+            super(TILE_SIZE / 2, red ? Color.RED : Color.YELLOW);
+            this.red = red;
 
-                setCenterX(TILE_SIZE / 2);
-                setCenterY(TILE_SIZE / 2);
-            }
+            setCenterX(TILE_SIZE / 2);
+            setCenterY(TILE_SIZE / 2);
         }
+    }
+
+    private void gameOver() {
+        if(redMove){
+            System.out.println("irabazlea "+j1);
+
+        }
+        else{
+            System.out.println("irabazlea "+j2);
+        }
+        System.exit(0);
+    }
 
     public void setMainApp(Konekta4FX main) {
         this.main = main;
@@ -201,7 +213,7 @@ public class JokoaKud implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        main.sceneJokoaEzarri(new Scene(createContent()));
+
     }
 
 

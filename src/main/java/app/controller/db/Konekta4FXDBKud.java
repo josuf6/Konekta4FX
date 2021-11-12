@@ -1,4 +1,4 @@
-package App.controllers.db;
+package app.controller.db;
 
 public class Konekta4FXDBKud {
 }

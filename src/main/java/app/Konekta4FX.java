@@ -1,7 +1,7 @@
-package App;
+package app;
 
-import App.controllers.ui.HasieraKud;
-import App.controllers.ui.JokoaKud;
+import app.controller.ui.HasieraKud;
+import app.controller.ui.JokoaKud;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,10 +45,9 @@ public class Konekta4FX extends Application {
         jokoaKud.setMainApp(this);
     }
 
-    public void sceneJokoaEzarri(Scene s){
-        sceneJokoa = s;
+    public void jokoaErakutsi(String j1, String j2){
+        sceneJokoa = new Scene(jokoaKud.createContent(j1,j2));
+        stage.setScene(sceneJokoa);
     }
-
-    public void jokoaErakutsi(){stage.setScene(sceneJokoa);}
 
 }

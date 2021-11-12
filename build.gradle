@@ -17,7 +17,7 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 version = '0.0.1'
-group = 'App.controllers'
+group = 'app'
 
 java {
     modularity.inferModulePath.set(true)
@@ -25,13 +25,13 @@ java {
 
 application {
     mainModule = 'javafx' // name defined in module-info.java
-    mainClass = 'App.controllers.Main'
+    mainClass = 'app.Konekta4FX'
 }
 
 
 
 // ext.moduleName = 'gradlejavafxhelloworld'
-mainClassName = "$moduleName/App.controllers.Konekta4FX"
+mainClassName = "$moduleName/app.Konekta4FX"
 
 
 javafx {

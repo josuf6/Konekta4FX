@@ -1,6 +1,6 @@
-package App.controllers.ui;
+package app.controller.ui;
 
-import App.Konekta4FX;
+import app.Konekta4FX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +25,7 @@ public class HasieraKud implements Initializable{
 
     @FXML
     void onClick(ActionEvent event) {
-        main.jokoaErakutsi();
+        main.jokoaErakutsi(txt1.getText(), txt2.getText());
     }
 
     public void setMainApp(Konekta4FX main) {

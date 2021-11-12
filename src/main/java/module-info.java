@@ -5,5 +5,5 @@ open module scenebuilder {
     requires java.sql;
 
     //requires de.jensd.fx.fontawesomefx.fontawesome;
-    exports App;
+    exports app;
 }
