@@ -1,6 +1,6 @@
-package app.controller.db;
+package App.controller.db;
 
-import app.utils.Propietateak;
+import App.utils.Propietateak;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;

@@ -1,16 +1,17 @@
-package app.controller.ui;
+package App.controller.ui;
 
-import app.Konekta4FX;
+import App.Konekta4FX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HasieraKud implements Initializable{
+public class HasieraKud implements Initializable {
 
     private Konekta4FX main;
 
@@ -24,7 +25,7 @@ public class HasieraKud implements Initializable{
     private Button btnBotoia;
 
     @FXML
-    void onClick(ActionEvent event) {
+    void onClick(ActionEvent event) throws IOException {
         main.jokoaErakutsi(txt1.getText(), txt2.getText());
     }
 
@@ -32,8 +33,11 @@ public class HasieraKud implements Initializable{
         this.main = main;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void hustuLbl() {
+        this.txt1.clear();
+        this.txt2.clear();
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {}
 }

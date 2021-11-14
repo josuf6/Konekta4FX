@@ -25,19 +25,19 @@ java {
 
 application {
     mainModule = 'javafx' // name defined in module-info.java
-    mainClass = 'app.Konekta4FX'
+    mainClass = 'App.Konekta4FX'
 }
 
 
 
 // ext.moduleName = 'gradlejavafxhelloworld'
-mainClassName = "$moduleName/app.Konekta4FX"
+mainClassName = "$moduleName/App.Konekta4FX"
 
 
-javafx {
+/*javafx {
     version = "12"
     modules = [ 'javafx.graphics', 'javafx.fxml', 'javafx.controls','javafx.swing']
-}
+}*/
 
 
 dependencies {
