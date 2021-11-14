@@ -129,11 +129,13 @@ public class JokoaKud implements Initializable {
         if(System.getProperty("os.name").toLowerCase().contains("win")) {
             path = path.replace("/", "\\");
         }
-        if (main.getJokalaria(pTxanda).getKolorea() == 'G') {
-            irudia = new Image(path + "gorria.png");
+       /* if (main.getJokalaria(pTxanda).getKolorea() == 'G') {
+            irudia = new Image(path + "G.png");
         } else if (main.getJokalaria(pTxanda).getKolorea() == 'B') {
-            irudia = new Image(path + "beltza.png");
+            irudia = new Image(path + "B.png");
         }
+*/
+        irudia = new Image(path + main.getJokalaria(pTxanda).getKolorea()+ ".png");
         this.gridPaneTaula.add(new ImageView(irudia), pZutab, pErrenk);
     }
 
