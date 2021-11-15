@@ -13,7 +13,7 @@ public class Konekta4FXDBKud {
    }
 
    public ArrayList<String> getPuntuazioak(){
-        String query = "select winner, points from puntuazioak order by points desc limit 10";
+        String query = "select winner, points from puntuazioak order by points desc limit 10"; //se podrían sacar más datos de la partida como el rival o la fecha
         ResultSet rs = DBKud.getDBKud().execSQL(query);
         ArrayList<String> urlList = new ArrayList<>();
         if (rs != null) {
