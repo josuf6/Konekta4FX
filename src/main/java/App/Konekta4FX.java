@@ -45,14 +45,14 @@ public class Konekta4FX extends Application {
     public void hasieraErakutsi() throws IOException {
         this.hasieraPantailaKargatu();
         this.hasieraKud.hustuLbl();
-        this.sceneEgokitu(hasieraUI, 764, 523);
+        this.sceneEgokitu(hasieraUI);
         stage.show();
     }
 
     public void jokoaErakutsi(String j1, String j2) throws IOException {
         this.jokoaPantailaKargatu();
         this.partidaBatJolastu(j1, j2);
-        this.sceneEgokitu(jokoaUI, 350, 450);
+        this.sceneEgokitu(jokoaUI);
         stage.show();
     }
 
@@ -63,15 +63,15 @@ public class Konekta4FX extends Application {
         } else {
             this.amaieraKud.setTestua("Ha ganado " + this.getJokalaria(pTxanda).getIzena());
         }
-        this.sceneEgokitu(amaieraUI, 300, 150);
+        this.sceneEgokitu(amaieraUI);
         stage.show();
     }
 
-    private void sceneEgokitu(Parent inerfazea, double zabalera, double altuera) {
-        stage.setScene(new Scene(inerfazea, zabalera, altuera));
+    private void sceneEgokitu(Parent inerfazea) {
+        stage.setScene(new Scene(inerfazea));
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((primScreenBounds.getWidth() - zabalera) / 2);
-        stage.setY((primScreenBounds.getHeight() - altuera) / 3);
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 3);
     }
 
     private void hasieraPantailaKargatu() throws IOException {
