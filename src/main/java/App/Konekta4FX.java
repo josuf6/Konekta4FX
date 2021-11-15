@@ -103,8 +103,8 @@ public class Konekta4FX extends Application {
         return jokalariak[pTxanda];
     }
 
-    private void partidaBatJolastu(String j1, String j2,String kolore1, String kolore2) {
-        this.jokalariakInskribatu(j1, j2,kolore1,kolore2);
+    private void partidaBatJolastu(String j1, String j2, String kolore1, String kolore2) {
+        this.jokalariakInskribatu(j1, j2, kolore1, kolore2);
         this.jokoaHasieratu();
         this.jokoaKud.jokoaHasieratu();
     }
@@ -167,47 +167,66 @@ public class Konekta4FX extends Application {
         this.txanda = 0;
     }
 
-    public void hurrengoTxanda(int zutab) throws IOException {
-        if (!Taula.getNireTaula().zutabBeteta(zutab)) {
-            int errenk = Taula.getNireTaula().getErrenkada(zutab);
-            this.fitxaKolorezAldatu(zutab, errenk, this.txanda);
+    public void kudeatuTxanda(int pZutab) throws IOException {
+        if (!Taula.getNireTaula().zutabBeteta(pZutab)) {
+            int errenk = Taula.getNireTaula().getErrenkada(pZutab);
+            this.fitxaKolorezAldatu(pZutab, errenk, this.txanda);
+            this.getJokalaria(this.txanda).addMugimendu();
+            Taula.getNireTaula().setAzkenekoFitxaZutabea(pZutab);
+            Taula.getNireTaula().setAzkenekoFitxaErrenkada(errenk);
             this.getJokalaria(this.txanda).addMugimendu();
 
-            if (!this.amaituta()) {
-
-                //TODO Aqui va lo de poder usar el comodin y que pasaria al usarlo (solo si el jugador tiene comodin)
-                //TODO (importante hacerlo antes de que se cambie el valor de this.txanda)
-                //TODO (y tambien importante comprobar de nuevo si despues de usar el comodin se ha acabado la partida)
-
-                if (this.txanda == 0) {
-                    this.txanda = 1;
-                } else if (this.txanda == 1) {
-                    this.txanda = 0;
-                } else {
-                    this.txanda = 0;
-                }
-            } else {
+            if (this.irabazleaDago()) {
                 this.emaitza();
+            } else {
+                int komErabilgarria = this.getJokalaria(this.txanda).getKomodinErabilgarria();
+                if (komErabilgarria != 0) {
+                    this.jokoaKud.aktibatuBtnKomodina();
+                    this.jokoaKud.desaktibatuTaula();
+                    if ((komErabilgarria == 1 && this.bonbaErabiltzeaZentzurikEz(pZutab, errenk)) || (komErabilgarria == 2 && this.eraldatuErabiltzeaZentzurikEz(pZutab, errenk))) {
+                        this.jokoaKud.aktibatuZentzurikEzModua();
+                    }
+                } else if (this.amaituta()) {
+                    this.emaitza();
+                } else {
+                    this.hurrengoTxanda();
+                }
             }
-            this.jokoaKud.setTxtTxanda(this.txanda);
         }
+    }
+
+    public void hurrengoTxanda() {
+        if (this.txanda == 0) {
+            this.txanda = 1;
+        } else if (this.txanda == 1) {
+            this.txanda = 0;
+        } else {
+            this.txanda = 0;
+        }
+        this.jokoaKud.setTxtTxanda(this.txanda);
+        this.jokoaKud.desaktibatuZentzurikEzModua();
+        this.jokoaKud.desaktibatuBtnKomodina();
+        this.jokoaKud.aktibatuTaula();
     }
 
     private void fitxaKolorezAldatu(int pZutab, int pErrenk, int pTxanda) {
         Gelaxka gelaxka = Taula.getNireTaula().getGelaxka(pZutab, pErrenk);
         if (gelaxka instanceof Bonba) {
-            this.getJokalaria(this.txanda).setKomodinErabilgarria(1);
-            this.jokoaKud.setTxtKomodina(1, this.txanda);
+            this.jokalariKomodinaAldatu(1, this.txanda);
             Taula.getNireTaula().setGelaxka(pZutab, pErrenk, 0);
         }
         else if (gelaxka instanceof Eraldatu) {
-            this.getJokalaria(this.txanda).setKomodinErabilgarria(2);
-            this.jokoaKud.setTxtKomodina(2, this.txanda);
+            this.jokalariKomodinaAldatu(2, this.txanda);
             Taula.getNireTaula().setGelaxka(pZutab, pErrenk, 0);
         }
         char kolorea = this.getJokalaria(pTxanda).getKolorea();
         Taula.getNireTaula().getGelaxka(pZutab, pErrenk).setKolorea(kolorea);
         this.jokoaKud.fitxaKolorezAldatu(pZutab, pErrenk, pTxanda);
+    }
+
+    private void jokalariKomodinaAldatu(int pKomodina, int pTxanda) {
+        this.getJokalaria(pTxanda).setKomodinErabilgarria(pKomodina);
+        this.jokoaKud.setTxtKomodina(pKomodina, pTxanda);
     }
 
     private boolean amaituta() {
@@ -233,6 +252,40 @@ public class Konekta4FX extends Application {
         }
         else {
             this.amaieraErakutsi(-1);
+        }
+    }
+
+    private boolean bonbaErabiltzeaZentzurikEz(int pZutab, int pErrenk) {
+        boolean zentzurikEz = false;
+        if (Taula.getNireTaula().albokoakHutsik(pZutab, pErrenk) || Taula.getNireTaula().albokoakKoloreBerdina(pZutab, pErrenk)) {
+            zentzurikEz=true;
+        }
+        return zentzurikEz;
+    }
+
+    private boolean eraldatuErabiltzeaZentzurikEz(int pZutab, int pErrenk) {
+        boolean zentzurikEz = false;
+        if (Taula.getNireTaula().azkenekoGelaxka(pErrenk) || Taula.getNireTaula().behekoaKoloreBerdina(pZutab, pErrenk)) {
+            zentzurikEz = true;
+        }
+        return zentzurikEz;
+    }
+
+    public void komodinaErabili() throws IOException {
+        int zutab = Taula.getNireTaula().getAzkenekoFitxaZutabea();
+        int errenk = Taula.getNireTaula().getAzkenekoFitxaErrenkada();
+        int komErabilgarria = this.getJokalaria(this.txanda).getKomodinErabilgarria();
+        if (komErabilgarria == 1) {
+            Taula.getNireTaula().ingurukoakDesagertu(zutab, errenk);
+        } else if (komErabilgarria == 2) {
+            Taula.getNireTaula().azpikoFitxaKolorezAldatu(zutab, errenk, this.getJokalaria(0).getKolorea(), this.getJokalaria(1).getKolorea());
+        }
+        this.jokalariKomodinaAldatu(0, this.txanda);
+        this.jokoaKud.pantailaratuTaula();
+        if (this.amaituta()) {
+            this.emaitza();
+        } else {
+            this.hurrengoTxanda();
         }
     }
 }
