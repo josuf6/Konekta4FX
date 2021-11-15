@@ -90,19 +90,37 @@ public class JokoaKud implements Initializable {
     public void jokoaHasieratu() {
         this.setTxtTxanda(0);
         this.txtKomodina11.setText(main.getJokalaria(0).getIzena());
+        this.txtKomodina11.setFill(getColor(main.getJokalaria(0).getKolorea()));
         this.txtKomodina12.setText("Ninguno");
         this.txtKomodina21.setText(main.getJokalaria(1).getIzena());
+        this.txtKomodina21.setFill(getColor(main.getJokalaria(1).getKolorea()));
         this.txtKomodina22.setText("Ninguno");
         this.pantailaratuTaula();
     }
 
+    public Color getColor(char kolore){
+        switch (kolore){    //puede que algun color este mal escrito
+            case 'A': return Color.PINK;
+            case 'B': return Color.BLACK;
+            case 'C': return Color.CYAN;
+            case 'G': return Color.RED;
+            case 'L': return Color.ORANGE;
+            case 'M': return Color.PURPLE;
+            case 'U': return Color.BLUE;
+            case 'V': return Color.GREEN;
+            case 'Y': return Color.YELLOW;
+        }
+        return Color.RED;
+    }
+
     public void setTxtTxanda(int txanda) {
         this.txtTxanda.setText(main.getJokalariak()[txanda].getIzena());
-        if (txanda == 0) {
+       /* if (txanda == 0) {    //que mal esta esto
             txtTxanda.setFill(Color.RED);
         } else if (txanda == 1) {
             txtTxanda.setFill(Color.BLACK);
-        }
+        }*/
+        txtTxanda.setFill(getColor(main.getJokalaria(txanda).getKolorea()));
     }
 
     public void pantailaratuTaula() {
