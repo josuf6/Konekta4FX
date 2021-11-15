@@ -1,6 +1,8 @@
 package App.controller.ui;
 
 import App.Konekta4FX;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,5 +54,19 @@ public class HasieraKud implements Initializable {
         ObservableList<String> koloreak = FXCollections.observableArrayList("Arrosa","Beltza","Zian","Gorria","Laranja","Morea","Urdina","Berdea","Horia");
         combo1.setItems(koloreak);
         combo2.setItems(koloreak);
+        addTextLimiter(txt1, 10);
+        addTextLimiter(txt2, 10);
+    }
+
+    private static void addTextLimiter(final TextField tf, final int maxLength) {
+        tf.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+                if (tf.getText().length() > maxLength) {
+                    String s = tf.getText().substring(0, maxLength);
+                    tf.setText(s);
+                }
+            }
+        });
     }
 }
