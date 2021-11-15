@@ -49,9 +49,9 @@ public class Konekta4FX extends Application {
         stage.show();
     }
 
-    public void jokoaErakutsi(String j1, String j2) throws IOException {
+    public void jokoaErakutsi(String j1, String j2,String kolore1, String kolore2) throws IOException {
         this.jokoaPantailaKargatu();
-        this.partidaBatJolastu(j1, j2);
+        this.partidaBatJolastu(j1, j2, kolore1, kolore2);
         this.sceneEgokitu(jokoaUI);
         stage.show();
     }
@@ -103,15 +103,31 @@ public class Konekta4FX extends Application {
         return jokalariak[pTxanda];
     }
 
-    private void partidaBatJolastu(String j1, String j2) {
-        this.jokalariakInskribatu(j1, j2);
+    private void partidaBatJolastu(String j1, String j2,String kolore1, String kolore2) {
+        this.jokalariakInskribatu(j1, j2,kolore1,kolore2);
         this.jokoaHasieratu();
         this.jokoaKud.jokoaHasieratu();
     }
 
-    private void jokalariakInskribatu(String j1, String j2) {
-        Konekta4FX.jokalariak[0] = new Jokalaria(j1, 'G');
-        Konekta4FX.jokalariak[1] = new Jokalaria(j2, 'B');
+    private void jokalariakInskribatu(String j1, String j2,String kolore1, String kolore2) { //hacer que en la llamada a este metodo se pasen los colores
+        Konekta4FX.jokalariak[0] = new Jokalaria(j1, koloreaBegiratu(kolore1));
+        Konekta4FX.jokalariak[1] = new Jokalaria(j2, koloreaBegiratu(kolore2));
+    }
+
+    private char koloreaBegiratu (String kolore){
+
+        switch (kolore){    //puede que algun color este mal escrito
+            case "Arrosa": return 'A';
+            case "Beltza": return 'B';
+            case "Zian": return 'C';
+            case "Gorria": return 'G';
+            case "Laranja": return 'L';
+            case "Morea": return 'M';
+            case "Urdina": return 'U';
+            case "Berdea": return 'V';
+            case "Horia": return 'Y';
+        }
+        return 'G';//esto igual habría que considerarlo de otra manera aunque nunca se va a llegar
     }
 
     private void jokoaHasieratu() {
@@ -155,6 +171,7 @@ public class Konekta4FX extends Application {
         if (!Taula.getNireTaula().zutabBeteta(zutab)) {
             int errenk = Taula.getNireTaula().getErrenkada(zutab);
             this.fitxaKolorezAldatu(zutab, errenk, this.txanda);
+            this.getJokalaria(this.txanda).addMugimendu();
 
             if (!this.amaituta()) {
 

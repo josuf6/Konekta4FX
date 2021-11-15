@@ -37,7 +37,7 @@ public class HasieraKud implements Initializable {
 
     @FXML
     void onClick(ActionEvent event) throws IOException {
-        main.jokoaErakutsi(txt1.getText(), txt2.getText());
+        main.jokoaErakutsi(txt1.getText(), txt2.getText(), combo1.getValue().toString(), combo2.getValue().toString());
     }
 
     public void setMainApp(Konekta4FX main) {
