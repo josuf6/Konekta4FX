@@ -91,7 +91,6 @@ public class JokoaKud implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         timer.setText(time.getCurrentTime());
-
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }

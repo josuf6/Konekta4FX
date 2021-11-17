@@ -1,5 +1,6 @@
 package App;
 
+import App.controller.db.Konekta4FXDBKud;
 import App.controller.ui.AmaieraKud;
 import App.controller.ui.HasieraKud;
 import App.controller.ui.JokoaKud;
@@ -57,11 +58,13 @@ public class Konekta4FX extends Application {
     }
 
     private void amaieraErakutsi(int pTxanda) throws IOException {
+        Konekta4FXDBKud.getInstantzia().insertPartida();
         this.amaieraPantailaKargatu();
         if (pTxanda == -1) {
             this.amaieraKud.setTestua("No ha ganado nadie");
         } else {
             this.amaieraKud.setTestua("Ha ganado " + this.getJokalaria(pTxanda).getIzena());
+            amaieraKud.setLista(Konekta4FXDBKud.getInstantzia().getPuntuazioak());
         }
         this.sceneEgokitu(amaieraUI);
         stage.show();
