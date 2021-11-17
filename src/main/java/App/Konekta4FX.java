@@ -29,6 +29,7 @@ public class Konekta4FX extends Application {
 
     private static final Jokalaria[] jokalariak = new Jokalaria[2];
     private int txanda;
+    private int moves=0;
 
     public static void main(String[] args) {
         launch();
@@ -59,10 +60,10 @@ public class Konekta4FX extends Application {
 
     private void amaieraErakutsi(int pTxanda) throws IOException {
         if(pTxanda == 0){
-            Konekta4FXDBKud.getInstantzia().insertPartida(this.getJokalaria(pTxanda).getIzena(),this.getJokalaria(pTxanda+1).getIzena(),pTxanda,jokoaKud.getDenbora());
+            Konekta4FXDBKud.getInstantzia().insertPartida(this.getJokalaria(pTxanda).getIzena(),this.getJokalaria(pTxanda+1).getIzena(),moves,jokoaKud.getDenbora());
         }
         else{
-            Konekta4FXDBKud.getInstantzia().insertPartida(this.getJokalaria(pTxanda-1).getIzena(),this.getJokalaria(pTxanda).getIzena(),pTxanda,jokoaKud.getDenbora());
+            Konekta4FXDBKud.getInstantzia().insertPartida(this.getJokalaria(pTxanda-1).getIzena(),this.getJokalaria(pTxanda).getIzena(),moves,jokoaKud.getDenbora());
         }
 
         this.amaieraPantailaKargatu();
@@ -70,7 +71,7 @@ public class Konekta4FX extends Application {
             this.amaieraKud.setTestua("No ha ganado nadie");
         } else {
             this.amaieraKud.setTestua("Ha ganado " + this.getJokalaria(pTxanda).getIzena());
-            amaieraKud.setLista(Konekta4FXDBKud.getInstantzia().getPuntuazioak());
+            amaieraKud.setLista();
         }
         this.sceneEgokitu(amaieraUI);
         stage.show();
@@ -205,6 +206,7 @@ public class Konekta4FX extends Application {
     }
 
     public void hurrengoTxanda() {
+        moves++;
         if (this.txanda == 0) {
             this.txanda = 1;
         } else if (this.txanda == 1) {

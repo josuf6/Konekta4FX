@@ -8,9 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,8 +34,19 @@ public class HasieraKud implements Initializable {
     private Button btnBotoia;
 
     @FXML
+    private Label lblWarning;
+
+    @FXML
     void onClick(ActionEvent event) throws IOException {
-        main.jokoaErakutsi(txt1.getText(), txt2.getText(), combo1.getValue().toString(), combo2.getValue().toString());
+        if((combo1.getValue()==null || combo2.getValue() == null)) {
+            lblWarning.setText("Mesedez bi kolore aukeratu");
+        }
+        else if(combo1.getValue() == combo2.getValue()){
+            lblWarning.setText("Mesedez bi kolore ezberdin aukeratu");
+        }
+        else{
+            main.jokoaErakutsi(txt1.getText(), txt2.getText(), combo1.getValue().toString(), combo2.getValue().toString());
+        }
     }
 
     public void setMainApp(Konekta4FX main) {
@@ -67,7 +76,7 @@ public class HasieraKud implements Initializable {
                     String s = tf.getText().substring(0, maxLength);
                     tf.setText(s);
                 }
-                if (txt1.getText().length() >= 1 && txt2.getText().length() >= 1 ){
+                if (txt1.getText().length() >= 1 && txt2.getText().length() >= 1){
                     btnBotoia.setDisable(false);
                 }else{
                     btnBotoia.setDisable(true);

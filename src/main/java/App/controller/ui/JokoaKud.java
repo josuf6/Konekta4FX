@@ -249,6 +249,6 @@ public class JokoaKud implements Initializable {
     }
 
     public String getDenbora(){
-        return timer.toString();
+        return timer.getText();
     }
 }

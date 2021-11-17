@@ -22,7 +22,7 @@ public class DBKud {
 
     private void conOpen(String dbpath) {
         try {
-            String url = "jdbc:sqlite:"+ dbpath ;
+            String url = "jdbc:sqlite:"+dbpath ;
             conn = DriverManager.getConnection(url);
 
             System.out.println("Database connection established");

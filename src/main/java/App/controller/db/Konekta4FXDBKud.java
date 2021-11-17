@@ -1,8 +1,12 @@
 package App.controller.db;
 
+import App.models.TablaAmaiera;
+
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
 
 public class Konekta4FXDBKud {
 
@@ -12,25 +16,28 @@ public class Konekta4FXDBKud {
        return instantzia;
    }
 
-   public ArrayList<String> getPuntuazioak(){
+   public List<TablaAmaiera> getPuntuazioak(){
         String query = "select winner, count(winner) as ganadas from puntuazioak order by ganadas desc limit 10"; //se podrían sacar más datos de la partida como el rival o la fecha
         ResultSet rs = DBKud.getDBKud().execSQL(query);
-        ArrayList<String> urlList = new ArrayList<>();
+        List<TablaAmaiera> emaitza = new ArrayList<>();
+
         if (rs != null) {
             try {
                while (rs.next()) {
-                   String emaitza = rs.getString("winner") + " : " + rs.getString("points");
-                   urlList.add(emaitza);
+                   String izena = rs.getString("winner");
+                   Integer puntuak = rs.getInt("ganadas");
+                   TablaAmaiera t = new TablaAmaiera(izena,puntuak);
+                   emaitza.add(t);
                }
            } catch(SQLException throwables){
                throwables.printStackTrace();
            }
         }
-        return urlList;
+        return emaitza;
     }
 
     public void insertPartida(String winner, String loser, int moves, String tiempo){
-        String query = "insert into puntuazioak (winner, loser, moves, tiempo, data) values ('" +winner+ "','" +loser+ "'," +moves+ ","+tiempo+",datetime('now','localtime'))";
+        String query = "insert into puntuazioak (winner, loser, moves, tiempo, data) values ('" +winner+ "','" +loser+ "',"+moves+",'"+tiempo+"',datetime('now','localtime'))";
         DBKud.getDBKud().execSQL(query);
     }
 
