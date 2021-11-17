@@ -247,4 +247,8 @@ public class JokoaKud implements Initializable {
     public void desaktibatuZentzurikEzModua() {
         this.btnEzErabili.setDefaultButton(false);
     }
+
+    public String getDenbora(){
+        return timer.toString();
+    }
 }

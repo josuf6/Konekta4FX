@@ -58,7 +58,7 @@ public class Konekta4FX extends Application {
     }
 
     private void amaieraErakutsi(int pTxanda) throws IOException {
-        Konekta4FXDBKud.getInstantzia().insertPartida();
+        Konekta4FXDBKud.getInstantzia().insertPartida(this.getJokalaria(pTxanda).getIzena(),this.getJokalaria(pTxanda+1).getIzena(),pTxanda,jokoaKud.getDenbora());
         this.amaieraPantailaKargatu();
         if (pTxanda == -1) {
             this.amaieraKud.setTestua("No ha ganado nadie");
