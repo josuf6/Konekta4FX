@@ -9,7 +9,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'org.openjfx.javafxplugin' version '0.0.5'
 }
 
 
@@ -34,10 +34,10 @@ application {
 mainClassName = "$moduleName/App.Konekta4FX"
 
 
-/*javafx {
+javafx {
     version = "12"
     modules = [ 'javafx.graphics', 'javafx.fxml', 'javafx.controls','javafx.swing']
-}*/
+}
 
 
 dependencies {

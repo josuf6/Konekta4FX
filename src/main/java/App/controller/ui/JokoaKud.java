@@ -4,6 +4,9 @@ import App.Konekta4FX;
 import App.models.Bonba;
 import App.models.Eraldatu;
 import App.models.Taula;
+import App.models.Time;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,10 +16,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class JokoaKud implements Initializable {
 
@@ -67,12 +72,29 @@ public class JokoaKud implements Initializable {
     @FXML
     private Button btnZut7;
 
+    @FXML
+    private Text timer;
+
+    Time time = new Time("00:00:00");
+
+    Timeline timeline = new Timeline(
+            new KeyFrame(Duration.seconds(1),
+                    e -> {
+                        time.oneSecondPassed();
+                        timer.setText(time.getCurrentTime());
+                    }));
+
     public void setMainApp(Konekta4FX main) {
         this.main = main;
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        timer.setText(time.getCurrentTime());
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
 
     @FXML
     void onClickBtnZut(ActionEvent event) throws IOException {
