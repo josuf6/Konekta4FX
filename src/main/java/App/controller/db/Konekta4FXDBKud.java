@@ -17,22 +17,21 @@ public class Konekta4FXDBKud {
    }
 
    public List<TablaAmaiera> getPuntuazioak(){
-        String query = "select winner, count(winner) as ganadas from puntuazioak order by ganadas desc limit 10"; //se podrían sacar más datos de la partida como el rival o la fecha
+        String query = "select winner, count(winner) as ganadas from puntuazioak group by winner order by ganadas desc;"; //se podrían sacar más datos de la partida como el rival o la fecha
         ResultSet rs = DBKud.getDBKud().execSQL(query);
         List<TablaAmaiera> emaitza = new ArrayList<>();
 
-        if (rs != null) {
-            try {
-               while (rs.next()) {
-                   String izena = rs.getString("winner");
-                   Integer puntuak = rs.getInt("ganadas");
-                   TablaAmaiera t = new TablaAmaiera(izena,puntuak);
-                   emaitza.add(t);
-               }
-           } catch(SQLException throwables){
-               throwables.printStackTrace();
-           }
+        try {
+            while (rs.next()) {
+                String izena = rs.getString("winner");
+                Integer puntuak = rs.getInt("ganadas");
+                TablaAmaiera t = new TablaAmaiera(izena, puntuak);
+                emaitza.add(t);
+            }
+        } catch(SQLException throwables){
+            throwables.printStackTrace();
         }
+
         return emaitza;
     }
 

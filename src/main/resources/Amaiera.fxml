@@ -15,7 +15,7 @@
             <TableView fx:id="tblTaula" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="tblizena" prefWidth="75.0" text="Izena" />
-                <TableColumn fx:id="tblPuntuak" prefWidth="75.0" text="Puntuak" />
+                <TableColumn fx:id="tblPuntuak" prefWidth="75.0" text="Irabaziak" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
