@@ -128,10 +128,10 @@ public class JokoaKud implements Initializable {
         this.setTxtTxanda(0);
         this.txtKomodina11.setText(main.getJokalaria(0).getIzena());
         this.txtKomodina11.setFill(getColor(main.getJokalaria(0).getKolorea()));
-        this.txtKomodina12.setText("Ninguno");
+        this.txtKomodina12.setText("Bat ere ez");
         this.txtKomodina21.setText(main.getJokalaria(1).getIzena());
         this.txtKomodina21.setFill(getColor(main.getJokalaria(1).getKolorea()));
-        this.txtKomodina22.setText("Ninguno");
+        this.txtKomodina22.setText("Bat ere ez");
         this.pantailaratuTaula();
     }
 
@@ -163,19 +163,19 @@ public class JokoaKud implements Initializable {
     public void setTxtKomodina(int pKomodina, int txanda) {
         if (txanda == 0) {
             if (pKomodina == 0) {
-                this.txtKomodina12.setText("Ninguno");
+                this.txtKomodina12.setText("Bat ere ez");
             } else if (pKomodina == 1) {
-                this.txtKomodina12.setText("Bomba");
+                this.txtKomodina12.setText("Bonba");
             } else if (pKomodina == 2) {
-                this.txtKomodina12.setText("Transformar");
+                this.txtKomodina12.setText("Eraldatu");
             }
         } else if (txanda == 1) {
             if (pKomodina == 0) {
-                this.txtKomodina22.setText("Ninguno");
+                this.txtKomodina22.setText("Bat ere ez");
             } else if (pKomodina == 1) {
-                this.txtKomodina22.setText("Bomba");
+                this.txtKomodina22.setText("Bonba");
             } else if (pKomodina == 2) {
-                this.txtKomodina22.setText("Transformar");
+                this.txtKomodina22.setText("Eraldatu");
             }
         }
     }

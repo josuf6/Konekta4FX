@@ -14,8 +14,8 @@
       <TextField fx:id="txt1" layoutX="292.0" layoutY="65.0" />
       <TextField fx:id="txt2" layoutX="292.0" layoutY="163.0" />
       <Button fx:id="btnBotoia" layoutX="299.0" layoutY="288.0" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="114.0" text="Hasi jokoa" />
-      <ComboBox fx:id="combo1" layoutX="501.0" layoutY="65.0" prefHeight="26.0" prefWidth="162.0" promptText="Aukeratu kolorea" />
-      <ComboBox fx:id="combo2" layoutX="501.0" layoutY="163.0" prefWidth="162.0" promptText="Aukeratu kolorea" />
+      <ComboBox fx:id="combo1" layoutX="501.0" layoutY="65.0" prefHeight="26.0" prefWidth="162.0" promptText="Kolorea aukeratu" />
+      <ComboBox fx:id="combo2" layoutX="501.0" layoutY="163.0" prefWidth="162.0" promptText="Kolorea aukeratu" />
       <Label fx:id="lblWarning" layoutX="26.0" layoutY="235.0" prefHeight="24.0" prefWidth="660.0" textFill="RED" />
    </children>
 </AnchorPane>

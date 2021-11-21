@@ -68,9 +68,9 @@ public class Konekta4FX extends Application {
 
         this.amaieraPantailaKargatu();
         if (pTxanda == -1) {
-            this.amaieraKud.setTestua("No ha ganado nadie");
+            this.amaieraKud.setTestua("Ez du inork irabazi");
         } else {
-            this.amaieraKud.setTestua("Ha ganado " + this.getJokalaria(pTxanda).getIzena());
+            this.amaieraKud.setTestua(this.getJokalaria(pTxanda).getIzena() + " da irabazlea");
             amaieraKud.setLista();
         }
         this.sceneEgokitu(amaieraUI, 301, 273);

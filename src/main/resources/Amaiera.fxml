@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.controller.ui.AmaieraKud">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.controller.ui.AmaieraKud">
    <children>
       <VBox alignment="CENTER" prefHeight="273.0" prefWidth="301.0">
          <children>
@@ -26,7 +26,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="38.0" text="Ok" textAlignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="50.0" text="Ados" textAlignment="CENTER">
                <VBox.margin>
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
