@@ -41,10 +41,12 @@ public class HasieraKud implements Initializable {
         if((combo1.getValue()==null || combo2.getValue() == null)) {
             lblWarning.setText("Mesedez bi kolore aukeratu");
         }
-        else if(combo1.getValue() == combo2.getValue()){
+        else if(combo1.getValue() == combo2.getValue()) {
             lblWarning.setText("Mesedez bi kolore ezberdin aukeratu");
+        } else if (txt1.getText().equals(txt2.getText())) {
+            lblWarning.setText("Mesedez bi izen ezberdin idatzi");
         }
-        else{
+        if (combo1.getValue() != null && combo2.getValue() != null && combo1.getValue() != combo2.getValue() && !txt1.getText().equals(txt2.getText())) {
             main.jokoaErakutsi(txt1.getText(), txt2.getText(), combo1.getValue().toString(), combo2.getValue().toString());
         }
     }
@@ -78,7 +80,7 @@ public class HasieraKud implements Initializable {
                 }
                 if (txt1.getText().length() >= 1 && txt2.getText().length() >= 1){
                     btnBotoia.setDisable(false);
-                }else{
+                } else{
                     btnBotoia.setDisable(true);
                 }
             }
