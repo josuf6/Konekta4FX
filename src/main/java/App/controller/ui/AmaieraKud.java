@@ -56,9 +56,8 @@ public class AmaieraKud implements Initializable {
         txtTestua.setTextAlignment(TextAlignment.CENTER);
     }
 
-    public void setLista(){
-        List<TablaAmaiera> kargatzekoa = Konekta4FXDBKud.getInstantzia().getPuntuazioak();
-        ObservableList<TablaAmaiera> tb = FXCollections.observableArrayList(kargatzekoa);
+    public void setLista(List<TablaAmaiera> pKargatzekoa){
+        ObservableList<TablaAmaiera> tb = FXCollections.observableArrayList(pKargatzekoa);
 
         tblTaula.setItems(tb);
         tblTaula.setEditable(true);

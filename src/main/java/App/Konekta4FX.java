@@ -14,6 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Konekta4FX extends Application {
 
@@ -71,7 +72,8 @@ public class Konekta4FX extends Application {
             this.amaieraKud.setTestua("Ez du inork irabazi");
         } else {
             this.amaieraKud.setTestua(this.getJokalaria(pTxanda).getIzena() + " da irabazlea");
-            amaieraKud.setLista();
+            List<TablaAmaiera> kargatzekoa = Konekta4FXDBKud.getInstantzia().getPuntuazioak();
+            amaieraKud.setLista(kargatzekoa);
         }
         this.sceneEgokitu(amaieraUI, 301, 273);
         stage.show();
